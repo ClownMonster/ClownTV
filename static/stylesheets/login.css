@@ -1,0 +1,46 @@
+
+
+
+.my_form{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: max-content;
+  height: max-content;
+  opacity: 2;
+  padding: 2rem 5rem 3rem 5rem;
+  color: whitesmoke;
+  background-color: rgb(45, 14, 77);
+
+}
+
+img{
+opacity: 0.2;
+}
+
+
+.my_form > form > .head{
+  display: flex;
+  width: 8rem;
+  height: 8rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 400;
+  border: 1px solid cornflowerblue;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+  background-color: lightcyan;
+  color:black
+}
+
+
+@media screen and (max-width:980px)
+{
+  .my_form{
+    background-color: rebeccapurple;
+    padding: 5rem 2.5rem 6rem 2.5rem;
+  }
+}
