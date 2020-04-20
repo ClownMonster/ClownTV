@@ -1,3 +1,6 @@
+###########################################################################################
+
+#imports
 from flask import Flask, render_template, redirect, request, url_for, session 
 
 # For Security
@@ -6,12 +9,24 @@ from flask_wtf.csrf import CSRFProtect
 # For DataBase Connection
 import sqlite3
 
+############################################################################################
+
+''' 
+Initial Setup for the Applications
+if securtiy key is removed then session will not work
+during deployment change the debug to false
+
+'''
 app = Flask(__name__)
 app.static_folder = 'static'
 app.secret_key = '97^%^&*()(*&^(*&^%$%^&*(*&^%'
 app.debug = True
 
 
+############################################################################################
+
+
+# Login Route if session not registered redirect to here
 @app.route('/', methods = ['GET', 'POST'])
 @app.route('/login/', methods = ['GET', 'POST'])
 def login_page():
@@ -19,6 +34,16 @@ def login_page():
     return render_template('login.html', msg = msg)
 
 
+#############################################################################################
+
+
+# Home rendered after login or already logged in
+'''
+Id is autoincremented data in the db
+each user has unique id,
+future development should restirct the number of browser windows with same id 
+
+'''
 @app.route('/Home/<id>', methods = ['GET', 'POST'])
 def home(id):
     user_data = {
@@ -45,6 +70,10 @@ def home(id):
 
 
 
+
+##############################################################################################
+
+# Route to validate the login data 
 @app.route('/validate' , methods = ['GET' ,'POST'])
 def validate():
     if request.method == 'POST':
@@ -77,7 +106,9 @@ def validate():
     return render_template('login.html', msg = err)
         
 
+##############################################################################################
 
+# singn up route for new users gets the route to add
 @app.route('/Signup',methods = ['GET' ,'POST'])
 def user_signup():
     return render_template('signup.html')
@@ -92,15 +123,18 @@ def add():
         err = 'User could not be added'
     return render_template('signup.html',msg = err)
 
+##############################################################################################
+
 
 # Invalid urls routings handled
 @app.errorhandler(404)
 def page_not_found(error):
+    # future developemt to render custom 404 error page
     return 'This Page Does Not Exists',404
 
 
 
 
-
+################################################################################################
 if __name__ == "__main__":
     app.run()
