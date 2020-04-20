@@ -109,16 +109,24 @@ def validate():
 ##############################################################################################
 
 # singn up route for new users gets the route to add
-@app.route('/Signup',methods = ['GET' ,'POST'])
+@app.route('/signup',methods = ['GET' ,'POST'])
 def user_signup():
-    return render_template('signup.html')
+    return render_template('signup.html', msg = 'Enter Valid Details')
 
 @app.route('/add',methods = ['GET' ,'POST'])
 def add():
     try:
-        with sqlite3.connect('./userlogin.db') as con:
-            con.execute(f" insert into Users (email,Password,FirstName,LastName) VALUES('{email}','{Password}', '{FirstName}', '{LastName}' );  ")
-            con.commit()
+        if request.method == 'POST':
+            email = request.form['mailId']
+            Password = request.form['passwd']
+            FirstName = request.form['fname']
+            LastName = request.form['lname']
+            with sqlite3.connect('./userlogin.db') as con:
+                con.execute(f" insert into Users (email,Password,FirstName,LastName) VALUES('{email}','{Password}', '{FirstName}', '{LastName}' );  ")
+                con.commit()
+            return redirect('/login')
+        else:
+            return render_template('signup.html',msg = err)
     except:
         err = 'User could not be added'
     return render_template('signup.html',msg = err)
