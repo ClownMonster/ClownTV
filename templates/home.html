@@ -4,28 +4,10 @@
 	<title>Clown TV</title>
 
 
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/home.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/login.css') }}">
 	<script type="text/javascript">
 		
 
-		(function($) {
-  $(function() {
-    $('nav ul li > a:not(:only-child)').click(function(e) {
-      $(this).siblings('.nav-dropdown').toggle();
-      $('.nav-dropdown').not($(this).siblings()).hide();
-      e.stopPropagation();
-    });
-    $('html').click(function() {
-      $('.nav-dropdown').hide();
-    });
-  });
-  document.querySelector('#nav-toggle').addEventListener('click', function() {
-    this.classList.toggle('active');
-  });
-  $('#nav-toggle').click(function() {
-    $('nav ul').toggle();
-  });
-})(jQuery);
 
 
 	</script>
@@ -50,47 +32,52 @@
 	<div class="header" style="width: 100%; height: 15rem;">
 		
 	</div>
-	<br>
-	<section class="navigation">
-  <div class="nav-container">
-    <div class="brand">
-      <a href="#!">Logo</a>
-    </div>
-    <nav>
-      <div class="nav-mobile">
-        <a id="nav-toggle" href="#!"><span></span></a>
-      </div>
-      <ul class="nav-list">
-        <li>
-          <a href="#!">Home</a>
-        </li>
-        <li>
-          <a href="#!">About</a>
-        </li>
-        <li>
-          <a href="#!">Services</a>
-          <ul class="nav-dropdown">
-            <li>
-              <a href="#!">Web Design</a>
-            </li>
-            <li>
-              <a href="#!">Web Development</a>
-            </li>
-            <li>
-              <a href="#!">Graphic Design</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#!">Pricing</a>
-        </li>
-        <li>
-          <a href="#!">Contact</a>
-        </li>
-      </ul>
-    </nav>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Trending</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Language
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Tamil</a>
+          <a class="dropdown-item" href="#">Kannada</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Category
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Thriller</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" method="POST" action="/send_search">
+      <input name='search' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
   </div>
-</section>
+</nav>
 <br>
 <div class="content">
 	<h1 style="color:black;">{{ context.content }}</h1>	
