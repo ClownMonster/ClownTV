@@ -133,7 +133,28 @@ def add():
 
 ##############################################################################################
 
+@app.route('/send_search', methods = ['GET','POST'])
+def send_search():
+    if request.method == 'POST':
+        s = request.form['search']
+        context = {
+            'content':s,
+        }
+        return render_template('home.html', context=context)
 
+    else:
+        return render_template('home.html', context='')
+
+#############################################################################################
+@app.route('/About', methods=['GET','POST'])
+def About():
+    return render_template('company.html')
+
+
+
+
+
+#############################################################################################
 # Invalid urls routings handled
 @app.errorhandler(404)
 def page_not_found(error):

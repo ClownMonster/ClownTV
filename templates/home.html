@@ -1,7 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clown TV</title>
 
 
-<p>{{ context['email'] }}</p>
-<p>{{ context['Password'] }}</p>
-<p>{{ context['FirstName'] }}</p>
-<p>{{ context['LastName'] }}</p>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/home.css') }}">
+	<script type="text/javascript">
+		
 
+		(function($) {
+  $(function() {
+    $('nav ul li > a:not(:only-child)').click(function(e) {
+      $(this).siblings('.nav-dropdown').toggle();
+      $('.nav-dropdown').not($(this).siblings()).hide();
+      e.stopPropagation();
+    });
+    $('html').click(function() {
+      $('.nav-dropdown').hide();
+    });
+  });
+  document.querySelector('#nav-toggle').addEventListener('click', function() {
+    this.classList.toggle('active');
+  });
+  $('#nav-toggle').click(function() {
+    $('nav ul').toggle();
+  });
+})(jQuery);
+
+
+	</script>
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename = 'images/icons/favicon.ico')}}"/>
+
+
+	 <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/bd81c4ab1e.js" crossorigin="anonymous"></script>
+  
+
+    <!--meta tags-->
+    <meta name="viewport " content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<div class="header" style="width: 100%; height: 15rem;">
+		
+	</div>
+	<br>
+	<section class="navigation">
+  <div class="nav-container">
+    <div class="brand">
+      <a href="#!">Logo</a>
+    </div>
+    <nav>
+      <div class="nav-mobile">
+        <a id="nav-toggle" href="#!"><span></span></a>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="#!">Home</a>
+        </li>
+        <li>
+          <a href="#!">About</a>
+        </li>
+        <li>
+          <a href="#!">Services</a>
+          <ul class="nav-dropdown">
+            <li>
+              <a href="#!">Web Design</a>
+            </li>
+            <li>
+              <a href="#!">Web Development</a>
+            </li>
+            <li>
+              <a href="#!">Graphic Design</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#!">Pricing</a>
+        </li>
+        <li>
+          <a href="#!">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</section>
+<br>
+<div class="content">
+	<h1 style="color:black;">{{ context.content }}</h1>	
+</div>
+
+</body>
+</html>
