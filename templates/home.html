@@ -4,13 +4,47 @@
 	<title>Clown TV</title>
 
 
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/login.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/home.css') }}">
 	<script type="text/javascript">
-		
+		var imgs = ['../static/images/bg-01.jpg', '../static/images/b2.jpeg', 'black'];
+        var index = 0;
+        setInterval(function(){
+            if(index == imgs.length)
+            {
+                index = 0;
+            }
+            document.getElementById('HBimg').src = imgs[index];
+            index++;
+        },3000);
 
 
 
-	</script>
+
+    </script>
+    
+
+    <style>
+        body{
+           margin: 0px;
+           box-sizing: border-box;
+        }
+        .bl1{
+            display: flex;
+            justify-content: center;
+            background-color: black;
+            width: 100%;
+            height: 20rem;
+        }
+        .bl1 > #HBimg{
+            opacity: 1 ;
+            display: flex;
+            align-self: center;
+            width:90%;
+            height: 17rem;
+            margin-top: 5rem;
+        }
+
+    </style>
 	<link rel="icon" type="image/png" href="{{ url_for('static', filename = 'images/icons/favicon.ico')}}"/>
 
 
@@ -29,48 +63,8 @@
 
 </head>
 <body>
-	<div class="header" style="width: 100%; height: 15rem;">
-		
-	</div>
-	<div class="bs-example">
-    <ul class="nav nav-pills mb-5">
-        <li class="nav-item">
-            <a href="#" class="nav-link active">Home</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">Profile</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Messages</a>
-            <div class="dropdown-menu">
-                <a href="#" class="dropdown-item">Inbox</a>
-                <a href="#" class="dropdown-item">Drafts</a>
-                <a href="#" class="dropdown-item">Sent Items</a>
-                <div class="dropdown-divider"></div>
-                <a href="#"class="dropdown-item">Trash</a>
-            </div>
-        </li>
-        <form class="form-inline my-2 my-lg-0" method="POST" action="/send_search">
-      	<input name='search' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-   		 </form>
-        <li class="nav-item dropdown ml-auto">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Admin</a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <a href="#" class="dropdown-item">Reports</a>
-                <a href="#" class="dropdown-item">Settings</a>
-                <div class="dropdown-divider"></div>
-                <a href="#"class="dropdown-item">Logout</a>
-            </div>
-        </li>
-    </ul>
-    
-  </div>
-</nav>
-<br>
-<div class="content">
-	<h1 style="color:black;">{{ context.content }}</h1>	
-</div>
-
+     <div class = 'bl1'>
+         <img id="HBimg" src="../static/images/bg-01.jpg"> 
+     </div>
 </body>
 </html>
