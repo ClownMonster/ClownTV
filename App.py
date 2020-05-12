@@ -9,6 +9,9 @@ from flask_wtf.csrf import CSRFProtect
 # For DataBase Connection
 import sqlite3
 
+import os
+
+
 ############################################################################################
 
 ''' 
@@ -51,9 +54,13 @@ def home(id):
         'FirstName':" ",
         'LastName' : " "
     }
+    
+    # blocking other random users from access
     global session
     if  not  session.get('email'):
         return redirect("/login")
+    if id != str(session.get('id')):
+        return redirect('/login')
     else:
         with sqlite3.connect('./userlogin.db') as con:
             cursor = con.execute(f' select * from Users where ID = "{id}" ')
@@ -68,7 +75,13 @@ def home(id):
 
     return render_template('home.html', context = user_data)
 
+@app.route('/tohome')
+def clownmonster():
+    id = session.get('id')
+    return redirect(f'/Home/{id}')
 
+
+    
 
 
 ##############################################################################################
@@ -94,6 +107,7 @@ def validate():
                             }
                         global session
                         session['email'] = email
+                        session['id'] = row[0]
                         return redirect(f'/Home/{user_data["id"]}')
 
         except Exception as e:
@@ -150,19 +164,28 @@ def send_search():
 def About():
     return render_template('company.html')
 
-
-
-
-
 #############################################################################################
 # Invalid urls routings handled
 @app.errorhandler(404)
 def page_not_found(error):
     # future developemt to render custom 404 error page
     return 'This Page Does Not Exists',404
+##############################################################################################
+@app.route('/English', methods = ['GET','POST'])
+def englishMovies():
+    images = os.listdir('./static/images/English')
+    return render_template('LangMovie.html', lang= 'English', images = images )
+
+@app.route('/Tamil', methods = ['GET','POST'])
+def tamilMovies():
+    images = os.listdir('./static/images/Tamil')
+    return render_template('LangMovie.html', lang= 'Tamil', images = images )
 
 
-
+@app.route('/Hindi', methods = ['GET','POST'])
+def hindiMovies():
+    images = os.listdir('./static/images/Hindi')
+    return render_template('LangMovie.html', lang= 'Hindi', images = images )
 
 ################################################################################################
 if __name__ == "__main__":
