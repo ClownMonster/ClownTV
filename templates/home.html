@@ -3,10 +3,18 @@
 <head>
 	<title>Clown TV</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+     <!-- Bootstrap -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/bd81c4ab1e.js" crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/home.css') }}">
 	<script type="text/javascript">
-		var imgs = ['../static/images/bg-01.jpg', '../static/images/b2.jpeg', 'black'];
+		var imgs = ['../static/images/bg-01.jpg', '../static/images/b2.jpeg'];
         var index = 0;
         setInterval(function(){
             if(index == imgs.length)
@@ -17,54 +25,145 @@
             index++;
         },3000);
 
+       $(document).ready(function(){
+        $("#block2-contents").hide();//hiding the contents until click event occurs
+        $("#more-click").click(function(e){
+          $("#block2-contents").show();
+          $(window).scrollTop(800);
+        });
 
+
+
+       });
 
 
     </script>
     
 
     <style>
-        body{
-           margin: 0px;
-           box-sizing: border-box;
-        }
-        .bl1{
-            display: flex;
-            justify-content: center;
-            background-color: black;
-            width: 100%;
-            height: 20rem;
-        }
-        .bl1 > #HBimg{
-            opacity: 1 ;
-            display: flex;
-            align-self: center;
-            width:90%;
-            height: 17rem;
-            margin-top: 5rem;
-        }
-
+  
     </style>
 	<link rel="icon" type="image/png" href="{{ url_for('static', filename = 'images/icons/favicon.ico')}}"/>
 
 
-	 <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/bd81c4ab1e.js" crossorigin="anonymous"></script>
-  
+	
 
     <!--meta tags-->
     <meta name="viewport " content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
 
 </head>
-<body>
+<body style="background: black;">
      <div class = 'bl1'>
          <img id="HBimg" src="../static/images/bg-01.jpg"> 
      </div>
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarColor02">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Trending<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">New</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Recommended</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Developers Info</a>
+            </li>
+          </ul>
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Category
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">comdedy</a>
+                  <a class="dropdown-item" href="#">Thriller</a>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Language
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">English</a>
+                  <a class="dropdown-item" href="#">Hindi</a>
+                  <a class="dropdown-item" href="#">Tamil</a>
+             </div>
+          
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      <br>
+      <br>
+      <div id="block1-contents">
+          <div>
+            <img src="../static/images/b3.jpg" class="rounded mx-auto d-block" alt="...">
+          </div>
+          <div>
+            <img src="../static/images/b3.jpg" class="rounded mx-auto d-block" alt="...">
+          </div>
+          <div>
+            <img src="../static/images/b3.jpg" class="rounded mx-auto d-block" alt="...">
+          </div>
+          <div>
+            <img src="../static/images/b3.jpg" class="rounded mx-auto d-block" alt="...">
+          </div>
+          <div>
+            <img src="../static/images/b3.jpg" class="rounded mx-auto d-block" alt="...">
+          </div>
+          <div>
+            <img src="../static/images/b3.jpg" class="rounded mx-auto d-block" alt="...">
+          </div>
+          <div>
+            <img src="../static/images/b3.jpg" class="rounded mx-auto d-block" alt="...">
+          </div>
+          
+      </div>
+      <br>
+      <div id="more-contents">
+          <div id="more-click" >Load More</div>
+      </div>
+      <br>
+      <br>
+      <div  style="display: none;" id="block2-contents">
+        <div>
+          <img src="../static/images/b3.jpg" class="rounded mx-auto d-block" alt="...">
+        </div>
+        <div>
+          <img src="../static/images/b3.jpg" class="rounded mx-auto d-block" alt="...">
+        </div>
+        <div>
+          <img src="../static/images/b3.jpg" class="rounded mx-auto d-block" alt="...">
+        </div>
+        <div>
+          <img src="../static/images/b3.jpg" class="rounded mx-auto d-block" alt="...">
+        </div>
+        <div>
+          <img src="../static/images/b3.jpg" class="rounded mx-auto d-block" alt="...">
+        </div>
+        <div>
+          <img src="../static/images/b3.jpg" class="rounded mx-auto d-block" alt="...">
+        </div>
+        <div>
+          <img src="../static/images/b3.jpg" class="rounded mx-auto d-block" alt="...">
+        </div>
+        
+    </div>
+
+
+
 </body>
 </html>
